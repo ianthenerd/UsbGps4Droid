@@ -2,10 +2,15 @@
 
 # UsbGps4Droid - A USB GPS provider for Android 
 
+
+
 UsbGps4Droid is a USB GPS provider application for the Android operating system,
 providing GPS support for devices down to android 4.0
 
-[Download latest release](../../releases)
+## Features from this fork
+
+- Autoconnect on serial device attachment
+- Send dtr and rts for ch340g and a lot of other serial converters support
 
 ## About
 The application provides location updates to Android which allows devices without 
@@ -26,6 +31,7 @@ tested as working with [GlobalSat BU-353-S4](http://usglobalsat.com/p-688-bu-353
 - User interface with readings from the USB GPS and a log showing NMEA data coming from the GPS
 - Abilty to sync android device time with GPS time (Requires root)
 - Support for any SiRF USB GPS device
+
 
 ## Usage
 
@@ -62,17 +68,17 @@ For now the background service can be manually started with a start service inte
 Intent intent = new Intent();
 intent.setComponent(
 	new Component(
-		"org.broeuschmeul.android.gps.usb.provider",
-		"org.broeuschmeul.android.gps.usb.provider.driver.USBGpsProviderService"
+		"org.broeuschmeul.android.gps",
+		"org.broeuschmeul.android.gps.driver.USBGpsProviderService"
 	)
 )
-intent.setAction("org.broeuschmeul.android.gps.usb.provider.action.START_GPS_PROVIDER")
+intent.setAction("org.broeuschmeul.android.gps.action.START_GPS_PROVIDER")
 ```
 
 Or via a shell command as root.
 
 ```bash
-am startservice -a org.broeuschmeul.android.gps.usb.provider.action.START_GPS_PROVIDER -n org.broeuschmeul.android.gps.usb.provider/.driver.USBGpsProviderService
+am startservice -a org.broeuschmeul.android.gps.action.START_GPS_PROVIDER -n org.broeuschmeul.android.gps/.driver.USBGpsProviderService
 ```
 
 The background service will automatically close itself when the USB device is disconnected for too long.

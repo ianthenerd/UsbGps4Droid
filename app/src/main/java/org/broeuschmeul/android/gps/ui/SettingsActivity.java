@@ -1,10 +1,12 @@
-package org.broeuschmeul.android.gps.usb.provider.ui;
+package org.broeuschmeul.android.gps.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
-import org.broeuschmeul.android.gps.usb.provider.R;
+import org.broeuschmeul.android.gps.R;
+
+import java.util.Objects;
 
 public class SettingsActivity extends USBGpsBaseActivity {
     @Override
@@ -17,7 +19,7 @@ public class SettingsActivity extends USBGpsBaseActivity {
         }
 
         setContentView(R.layout.activity_settings);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         showSettingsFragment(R.id.settings_content, true);
     }
